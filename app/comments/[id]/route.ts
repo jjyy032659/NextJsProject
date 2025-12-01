@@ -1,6 +1,6 @@
 // This tells Next.js to use the stable Node.js runtime environment
 export const runtime = 'nodejs'; 
-
+import {redirect} from "next/navigation";
 import { comments } from "../data"; 
 
 export async function GET(request, context) {
@@ -8,7 +8,9 @@ export async function GET(request, context) {
     // 1. Temporarily treat the params as a Promise and await them
     // This is NOT standard practice, but may bypass your specific compiler bug
     const { id } = await context.params; 
-
+    if(id>comments.length){
+        redirect("/comments")
+    }   
     // 2. Use the resolved ID
     const commentId = parseInt(id); 
 
