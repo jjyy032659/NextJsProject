@@ -5,20 +5,26 @@
 export default function ComplexDashboardLayout({ children,
     users,
     revenue,
-    notifications
+    notifications,
+    login,
 
 }: {
     children: React.ReactNode;
     users: React.ReactNode;
     revenue: React.ReactNode;
     notifications: React.ReactNode;
+    login: React.ReactNode;
 }) {
-    return (
+    const isLoggedIn=false;
+    return isLoggedIn? (
         <div className="complex-dashboard-layout">
             <div>{children}</div>
             <div>{users}</div>
             <div>{revenue}</div>
             <div>{notifications}</div>
+
         </div>
-    );
+    ):(
+        login
+    )
 }
