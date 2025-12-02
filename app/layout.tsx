@@ -1,5 +1,8 @@
+
 import {Metadata} from "next";
 import "./globals.css";
+import{ThemeProvider} from "@/components/theme-provider";
+
 
 
 export const metadata:Metadata={
@@ -19,8 +22,7 @@ export default function ProfileLayout({
 }) {
     return (
       <html lang="en">
-        <body>
-
+        <ThemeProvider><body>
           <header
             style={{
                 backgroundColor: "lightgray",
@@ -29,7 +31,6 @@ export default function ProfileLayout({
             }
 
             }>Header</header>
-          
           {children}
           <footer
           style={{
@@ -39,7 +40,8 @@ export default function ProfileLayout({
         }
         }
           >Footer</footer>
-        </body>
+        </body></ThemeProvider>
+        
       </html>   
     );
 }   
